@@ -4,14 +4,14 @@ Create "C:\Flights Project\Data\" folder
 
 
 Create database and tables.dtsx
-1. Execute SQL Task: Executes <Create Flights2017 Database.sql>
-2a. Execute SQL Task: Executes <Create Airports Table.sql>
-2b. Execute SQL Task: Executes <Create Airlines Table.sql>
-2c. Execute SQL Task: Executes <Create Routes Table.sql>
+1. Execute SQL Task: Executes [Create Flights2017 Database.sql]
+2a. Execute SQL Task: Executes [Create Airports Table.sql]
+2b. Execute SQL Task: Executes [Create Airlines Table.sql]
+2c. Execute SQL Task: Executes [Create Routes Table.sql]
 
 
 ETL Process.dtsx
-1. Execute Process Task: Executes PowerShell.exe with agruments to execute <Download Data.ps1>. This will download all three .dat files (airports, airlines, routes) to "C:\Flights Project\" folder
+1. Execute Process Task: Executes PowerShell.exe with agruments to execute [Download Data.ps1]. This will download all three .dat files (airports, airlines, routes) to "C:\Flights Project\" folder
 2. Foreach Loop Container:
 2a. File System Task: Moves all .dat files from "C:\Flights Project\" folder to "C:\Flights Project\Data\" folder
 3. Foreach Loop Container: Writes filename to variable in loop and reads in script
@@ -26,5 +26,8 @@ ETL Process.dtsx
 
 Notes:
 You will need to change Connection Managers for connection to the database.
-<Create database and tables.dtsx> drops data and tables if they already exist. You can run this package repeatable with same results.
-<ETL Process.dtsx> will overwrite files and truncate tables. You can run this package repeatable with same results.
+[Create database and tables.dtsx] drops data and tables if they already exist. You can run this package repeatable with same results.
+[ETL Process.dtsx] will overwrite files and truncate tables. You can run this package repeatable with same results.
+
+Credits:
+"https://github.com/jpatokal/openflights" for the data
