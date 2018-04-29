@@ -1,31 +1,18 @@
-BEGIN TRANSACTION
-SET QUOTED_IDENTIFIER ON
-SET ARITHABORT ON
-SET NUMERIC_ROUNDABORT OFF
-SET CONCAT_NULL_YIELDS_NULL ON
-SET ANSI_NULLS ON
-SET ANSI_PADDING ON
-SET ANSI_WARNINGS ON
-COMMIT
-BEGIN TRANSACTION
+USE [Flights2017]
 GO
-USE Flights2017
-GO
-DROP TABLE IF EXISTS [Routes]
-GO
-CREATE TABLE [dbo].[Routes]
-	(
+
+CREATE TABLE [dbo].[Routes](
 	[Airline] [nvarchar](10) NULL,
-	[AirlineID] [numeric](18, 0) NULL,
+	[AirlineID] [int] NULL,
 	[SourceAirport] [nvarchar](10) NULL,
-	[SourceAirportID] [numeric](18, 0) NULL,
+	[SourceAirportID] [int] NULL,
 	[DestinationAirport] [nvarchar](10) NULL,
-	[DestinationAirportID] [numeric](18, 0) NULL,
+	[DestinationAirportID] [int] NULL,
 	[Codeshare] [nvarchar](10) NULL,
-	[Stops] [numeric](18, 0) NULL,
-	[Equipment] [nvarchar](100) NULL
-	)  ON SECONDARY
+	[Stops] [int] NOT NULL,
+	[Equipment] [nvarchar](100) NULL,
+	[RouteID] [int] IDENTITY(1,1) NOT NULL,
+ CONSTRAINT [PK_Routes] PRIMARY KEY CLUSTERED([RouteID] ASC)
+	WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [SECONDARY])
+	ON [SECONDARY]
 GO
-ALTER TABLE [dbo].[Routes] SET (LOCK_ESCALATION = TABLE)
-GO
-COMMIT
