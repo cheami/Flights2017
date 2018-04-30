@@ -46,3 +46,7 @@ GO
 CREATE NONCLUSTERED INDEX [IX_Routes] ON [dbo].[Routes]([SourceAirportID] ASC, [DestinationAirportID] ASC)
 	ON [SECONDARY]
 GO
+
+CREATE NONCLUSTERED INDEX [IX_Routes_1] ON [dbo].[Routes]([SourceAirport] ASC)
+	ON [SECONDARY]
+GO
